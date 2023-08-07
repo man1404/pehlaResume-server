@@ -3,7 +3,7 @@ const cors = require("cors");
 const pdf = require("html-pdf");
 const pdfSample = require("./pdfsample/index");
 const newSchema = require("./userModel");
-const path = require('path');
+const path = require("path");
 const { connectDB } = require("./mongo");
 connectDB();
 
@@ -37,11 +37,8 @@ app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
+app.use("/", require("./userRoutes"));
 
-app.use("/",require("./userRoutes"))
-
-
-
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Server is running on port=${port}`);
 });
