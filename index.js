@@ -32,9 +32,6 @@ app.get("/fetch-pdf", (req, res) => {
 });
 
 app.use(express.static(path.join(__dirname, "./client/build")));
-app.get("/", (req, res) => {
-  res.send("HELLO");
-});
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
